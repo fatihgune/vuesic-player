@@ -1376,9 +1376,21 @@ input[type="range"]::-webkit-slider-thumb:hover {
     .vp-skip-forward {
         margin-left: 1rem;
     }
+    .vp-main-controls {
+        margin-bottom: 16px;
+    }
 
     .vp-artist {
-        width: 40%;
+        width: 70%;
+    }
+    .vp-controls-wrapper {
+        justify-content: end;
+        left: 50px;
+        position: relative;
+    }
+
+    ..vp-player-bar {
+        min-height: 110px;
     }
 }
 </style>
