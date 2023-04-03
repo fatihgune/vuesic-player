@@ -712,6 +712,7 @@ export default {
             this.currentSong.album = song.album;
             this.currentSong.url = song.url;
             this.currentSong.cover_art_url = song.cover_art_url;
+            this.currentSong.isLiked = song.isLiked;
 
             this.previousNextUpListIndex = this.nextUpList.currentIndex;
         },
