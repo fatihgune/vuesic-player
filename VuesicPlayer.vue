@@ -57,7 +57,7 @@
                  id="vp-player">
                 <div class="vp-player-left flex place-items-center">
                     <div class="vp-album-art">
-                        <img :src="currentSong.cover_art_url" class="vp-img"/>
+                        <img alt="cover_art" :src="currentSong.cover_art_url" class="vp-img"/>
                     </div>
                     <div class="vp-title-and-artist">
                         <div class="vp-title">
@@ -136,9 +136,9 @@
                         </div>
                         <div class="vp-volume cursor-pointer">
                             <div class="vp-slider-container" v-show="volumeSliderShown"
-                                 @mouseleave="hideShowVolumeSlider"
+                                 @mouseleave="hideVolumeSlider"
                                  @mouseover="showVolumeSlider">
-                                <input type="range" min="0" max="100" value="100" orient="vertical"
+                                <input type="range" min="0" max="100" value="100"
                                        id="vp-volume-slider" aria-hidden="true">
                             </div>
                             <component :is="isMuted ? icons.SpeakerXMarkIcon : icons.SpeakerWaveIcon"
@@ -158,8 +158,6 @@
         <!-- the audio player code ends here -->
         <audio :loop="innerLoop" ref="audiofile" :src="defaultSong" preload style="display: none" controls></audio>
     </div>
-
-
 </template>
 
 <script>
@@ -306,7 +304,6 @@ export default {
 
     created() {
         this.innerLoop = this.loop.state;
-        window.addEventListener('keypress', this.onKeyPress);
     },
     mounted() {
         this.audioPlayer = this.$el.querySelectorAll("audio")[0];
@@ -760,15 +757,6 @@ export default {
 
         showVolumeSlider() {
             this.volumeSliderShown = true;
-        },
-        onKeyPress(e) {
-            if (e.keyCode === 32) {
-                if (this.isPlaying) {
-                    this.pause();
-                    return
-                }
-                this.playCurrentSong();
-            }
         },
     },
 
